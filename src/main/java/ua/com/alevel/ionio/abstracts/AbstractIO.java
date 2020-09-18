@@ -7,7 +7,10 @@ package ua.com.alevel.ionio.abstracts;
 public interface AbstractIO {
 
     void createFile();
+
     void createDir();
+
     void listFiles();
+
     void fetchFiles();
 }

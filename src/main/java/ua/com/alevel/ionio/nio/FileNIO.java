@@ -33,7 +33,7 @@ public class FileNIO implements AbstractIO {
 
     @Override
     public void createDir() {
-        Path path = Paths.get("test");
+        Path path = Paths.get("test/test1");
         try {
             if (!Files.exists(path)) {
                 Files.createDirectory(path);
@@ -41,12 +41,14 @@ public class FileNIO implements AbstractIO {
         } catch (IOException e) {
             e.printStackTrace();
         }
+//        System.out.println("path = " + path.toFile().getAbsolutePath());
 
 //        try {
 //            path = Files.createTempDirectory("test");
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+//        System.out.println("path = " + path.toFile().getAbsolutePath());
 //
 //        Path file = path.resolve("file.txt");
 //        try {
@@ -59,6 +61,7 @@ public class FileNIO implements AbstractIO {
 
     @Override
     public void listFiles() {
+        createDir();
         Set<String> fileList = new HashSet<>();
         try {
             DirectoryStream<Path> paths = Files.newDirectoryStream(Paths.get("test"));
@@ -77,7 +80,7 @@ public class FileNIO implements AbstractIO {
         try {
             Stream<Path> pathStream = Files.walk(Paths.get("test"));
             fileList = pathStream
-                    .filter(path -> !Files.isDirectory(path))
+                    .filter(Files::isDirectory)
                     .map(Path::getFileName)
                     .map(Path::toString)
                     .collect(Collectors.toSet());

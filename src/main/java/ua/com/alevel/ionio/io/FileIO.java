@@ -14,13 +14,20 @@ public class FileIO implements AbstractIO {
 
     @Override
     public void createFile() {
-        File file = new File(".file.txt");
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("file = " + file.isHidden());
+//        File file = new File("file.txt");
+//        System.out.println("file = " + file);
+//        System.out.println("getAbsolutePath = " + file.getAbsolutePath());
+//        System.out.println("length = " + file.length());
+//        System.out.println("exists = " + file.exists());
+//        try {
+//            file.createNewFile();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println("exists = " + file.exists());
+//        System.out.println("isFile = " + file.isFile());
+//        System.out.println("isHidden = " + file.isHidden());
 
 //        try (PrintStream out = new PrintStream(new FileOutputStream("file.txt"))) {
 //            out.println("bla bla");
@@ -49,6 +56,18 @@ public class FileIO implements AbstractIO {
         mkdir = dir.mkdirs();
     }
 
+    private void consoleCommander(File file) {
+        System.out.println("dir = " + file.getPath());
+        File[] list = file.listFiles();
+        for (File currentFile : list) {
+            if (currentFile.isDirectory()) {
+                consoleCommander(currentFile);
+            } else {
+                System.out.println("file = " + currentFile.getName());
+            }
+        }
+    }
+
     @Override
     public void listFiles() {
 
@@ -60,10 +79,18 @@ public class FileIO implements AbstractIO {
 //        }
 
         // 2
+//        File rootFile = new File("test");
         File rootFile = new File("test");
+        consoleCommander(rootFile);
+//        rootFile.mkdirs();
 //        File[] files = rootFile.listFiles();
+//        System.out.println("files = " + files.length);
 //        for (File file : files) {
-//            System.out.println("file = " + file.getPath());
+//            if (file.isFile()) {
+//                System.out.println("file = " + file.getName());
+//            } else {
+//                System.out.println("dir = " + file.getName());
+//            }
 //        }
 
         // 3
@@ -76,11 +103,11 @@ public class FileIO implements AbstractIO {
 //        System.out.println("------------------------------------------------------");
 
         // 4
-        File[] files = rootFile.listFiles((file, name) -> name.endsWith(".txt"));
-
-        for (File file : files) {
-            System.out.println("file = " + file.getPath());
-        }
+//        File[] files = rootFile.listFiles((file, name) -> name.endsWith(".txt"));
+//
+//        for (File file : files) {
+//            System.out.println("file = " + file.getPath());
+//        }
     }
 
     @Override
