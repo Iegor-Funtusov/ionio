@@ -57,6 +57,28 @@ public class FileNIO implements AbstractIO {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+
+
+//        Files.copy(pathSource, pathDestination);
+
+
+//        Path pathSource = Paths.get("Вставьте сюда путь к файлу/директории, который надо переместить");
+//        Path pathDestination = Paths.get("Вставьте сюда путь для нового местоположения файла/директории");
+//        try {
+//            Files.move(pathSource, pathDestination, StandardCopyOption.REPLACE_EXISTING);
+//            System.out.println("Source file copied successfully");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+
+//        Path pathSource = Paths.get("Вставьте сюда путь к файлу/директории для удаления");
+//        try {
+//            Files.delete(pathSource);
+//            System.out.println("File deleted successfully");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override

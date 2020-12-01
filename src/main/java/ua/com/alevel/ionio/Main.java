@@ -25,8 +25,21 @@ public class Main implements Serializable {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("Input");
+            int a = Integer.parseInt(reader.readLine());
+            System.out.println("a = " + a);
+            int b = Integer.parseInt(reader.readLine());
+            System.out.println("b = " + b);
+            if (((a<1&&a>8)&&(b<1&&b>8)) || ((a<1&&a>8)||(b<1&&b>8))) {
+                System.out.println("1");
+            } else {
+                System.out.println("2");
+            }
+        } catch (Exception e) {}
 
-        SerializableTest.run();
+
+//        SerializableTest.run();
 
 //        FileIO io = new FileIO();
 //        io.createDir();
